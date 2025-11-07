@@ -1,0 +1,371 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Sean Hyde — AI / LLM Research</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      name="description"
+      content="Sean Hyde — senior CS student at RPI focused on AI and LLM research, RAG systems, and tool/agent frameworks."
+    />
+
+    <style>
+      :root {
+        color-scheme: light;
+        --page-bg: #fdf7e3;
+        --panel-bg: #f3e7c3;
+        --panel-border: #d4c28a;
+        --text-main: #1f1b16;
+        --text-muted: #5e4f3c;
+        --chip-bg: #efe2b8;
+        --chip-border: #d2be8a;
+        --accent: #1f6feb;
+      }
+
+      .dark {
+        color-scheme: dark;
+        --page-bg: #020617;
+        --panel-bg: #0f172a;
+        --panel-border: #1d2a44;
+        --text-main: #f8fafc;
+        --text-muted: #cbd5f5;
+        --chip-bg: #0f172a;
+        --chip-border: #1d2a44;
+        --accent: #38bdf8;
+      }
+    </style>
+
+    <script>
+      tailwind.config = {
+        darkMode: "class",
+      };
+    </script>
+
+    <!-- Tailwind via CDN (fine for a tiny personal site) -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <script>
+      const root = document.documentElement;
+      const storedTheme = localStorage.theme;
+      const prefersDark = window.matchMedia(
+        "(prefers-color-scheme: dark)"
+      ).matches;
+
+      if (storedTheme === "dark" || (!storedTheme && prefersDark)) {
+        root.classList.add("dark");
+        localStorage.theme = "dark";
+      } else {
+        root.classList.remove("dark");
+        localStorage.theme = "light";
+      }
+    </script>
+  </head>
+
+  <body
+    class="bg-[color:var(--page-bg)] text-[color:var(--text-main)] min-h-screen flex flex-col transition-colors duration-300"
+  >
+    <main class="max-w-3xl mx-auto w-full px-6 md:px-8 py-8 md:py-12">
+      <!-- Top nav -->
+      <header class="flex items-center justify-between mb-10">
+        <nav class="text-sm text-[color:var(--text-muted)] space-x-5">
+          <a
+            href="#about"
+            class="hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+            >About</a
+          >
+          <a
+            href="#experience"
+            class="hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+            >Experience</a
+          >
+          <a
+            href="#projects"
+            class="hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+            >Projects</a
+          >
+          <a
+            href="#contact"
+            class="hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+            >Contact</a
+          >
+        </nav>
+
+        <!-- Dark mode toggle -->
+        <button
+          id="theme-toggle"
+          type="button"
+          aria-label="Toggle dark mode"
+          class="p-2 rounded-full border border-[color:var(--panel-border)] text-[color:var(--text-muted)] text-xs hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+        >
+          <span id="theme-toggle-icon" aria-hidden="true">☀</span>
+        </button>
+      </header>
+
+      <!-- Hero -->
+      <section id="about" class="mb-12">
+        <div
+          class="mb-3 text-xs uppercase tracking-[.2em] text-[color:var(--text-muted)]"
+        >
+          sean.hyde
+        </div>
+        <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight mb-4">
+          Hi, I’m Sean.
+        </h1>
+
+        <p
+          class="text-[color:var(--text-main)] opacity-90 text-base md:text-lg leading-relaxed mb-4"
+        >
+          I’m a senior Computer Science student at
+          <span class="font-semibold">Rensselaer Polytechnic Institute</span>,
+          graduating in Fall ’26. I work on
+          <span class="font-semibold">large language models</span>,
+          retrieval-augmented generation (RAG), and tool/agent frameworks like
+          <span class="font-semibold text-[color:var(--text-main)]">MCP</span>
+          and <span class="font-semibold">ACP</span>, with a focus on evaluation
+          and deployment.
+        </p>
+
+        <p
+          class="text-[color:var(--text-muted)] text-sm md:text-base leading-relaxed"
+        >
+          This site is essentially a walkable version of my resume — nothing
+          fancy, just enough so you can see what I’m working on, what I'm
+          interested in, and how to reach me.
+        </p>
+      </section>
+
+      <!-- Quick links / directory -->
+      <section class="mb-10">
+        <div
+          class="flex flex-wrap gap-3 text-sm text-[color:var(--accent)] font-medium mt-2"
+        >
+          <!-- Email -->
+          <a
+            href="mailto:shyde04.contact@gmail.com"
+            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[color:var(--chip-bg)] border border-[color:var(--chip-border)] text-[color:var(--text-main)] hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+          >
+            <span>✉</span>
+            <span>Email</span>
+          </a>
+
+          <!-- GitHub -->
+          <a
+            href="https://github.com/shyde7"
+            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[color:var(--chip-bg)] border border-[color:var(--chip-border)] text-[color:var(--text-main)] hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+          >
+            <span>⌘</span>
+            <span>GitHub</span>
+          </a>
+
+          <!-- LinkedIn -->
+          <a
+            href="https://www.linkedin.com/in/shyde00/"
+            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[color:var(--chip-bg)] border border-[color:var(--chip-border)] text-[color:var(--text-main)] hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+          >
+            <span>in</span>
+            <span>LinkedIn</span>
+          </a>
+
+          <!-- Resume -->
+          <a
+            href="Sean_Hyde_Resume.pdf"
+            class="inline-flex items-center gap-1 px-3 py-1.5 rounded-full bg-[color:var(--chip-bg)] border border-[color:var(--chip-border)] text-[color:var(--text-main)] hover:border-[color:var(--accent)] hover:text-[color:var(--accent)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+          >
+            <span>📄</span>
+            <span>Resume (PDF)</span>
+          </a>
+        </div>
+      </section>
+      <!-- Experience -->
+      <section id="experience" class="mb-12">
+        <h2 class="text-lg font-semibold mb-4">Experience</h2>
+
+        <div class="space-y-6 text-sm md:text-base">
+          <!-- Griffiss -->
+          <article>
+            <div class="flex flex-wrap justify-between gap-2 mb-1">
+              <h3 class="font-semibold">Griffiss Institute</h3>
+              <span class="text-[color:var(--text-muted)] text-xs"
+                >May 2025 – Aug 2025</span
+              >
+            </div>
+            <div class="text-[color:var(--text-muted)] text-xs mb-2">
+              Research Intern — AI / LLM Research · Rome, NY
+            </div>
+            <ul
+              class="list-disc list-inside space-y-1 text-[color:var(--text-main)] opacity-90"
+            >
+              <li>
+                Supported <span class="font-semibold">LLM research</span> on
+                model training, optimization, and information retrieval for
+                defense / national-security–oriented applications.
+              </li>
+              <li>
+                Built <span class="font-semibold">tool- and agent-based</span>
+                workflows using MCP/ACP and A2A-style coordination to enable
+                multi-step pipelines over external tools and data sources.
+              </li>
+              <li>
+                Implemented
+                <span class="font-semibold">RAG pipelines</span>
+                (ingestion, chunking, embeddings, retrieval, generation) and ran
+                ablations on retrieval parameters and prompts to evaluate
+                accuracy vs. latency trade-offs.
+              </li>
+              <li>
+                Fine-tuned models with
+                <span class="font-semibold">Unsloth</span> in Dockerized
+                environments on an HPC cluster, running structured experiment
+                sweeps and tracking metrics for alignment and robustness.
+              </li>
+              <li>
+                Developed evaluation harnesses (including
+                <span class="font-semibold">LLM-as-a-judge</span>) and wrote
+                internal notes documenting best practices for LLM/RAG
+                development and deployment.
+              </li>
+            </ul>
+          </article>
+
+          <!-- LiftRyte -->
+          <article>
+            <div class="flex flex-wrap justify-between gap-2 mb-1">
+              <h3 class="font-semibold">LiftRyte Start-up</h3>
+              <span class="text-[color:var(--text-muted)] text-xs"
+                >Jan 2024 – Present</span
+              >
+            </div>
+            <div class="text-[color:var(--text-muted)] text-xs mb-2">
+              Co-Founder · Front-End Engineer · Troy, NY (on hiatus)
+            </div>
+            <ul
+              class="list-disc list-inside space-y-1 text-[color:var(--text-main)] opacity-90"
+            >
+              <li>
+                Co-founded a mobile app to help gym-goers improve lifting form
+                in real time, building the UI in
+                <span class="font-semibold">React Native</span>.
+              </li>
+              <li>
+                Worked with a small team on feature design, implementation, and
+                testing. Active development is currently paused while we
+                evaluate long-term direction.
+              </li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <!-- Projects -->
+      <section id="projects" class="mb-12">
+        <h2 class="text-lg font-semibold mb-4">Projects</h2>
+
+        <div
+          class="space-y-4 text-sm md:text-base text-[color:var(--text-main)] opacity-90"
+        >
+          <article>
+            <div class="flex flex-wrap justify-between gap-2 mb-1">
+              <h3 class="font-semibold">JWT Authentication Sample Project</h3>
+              <span class="text-[color:var(--text-muted)] text-xs">2024</span>
+            </div>
+            <p class="text-[color:var(--text-main)]">
+              Full-stack authentication demo using JWT with registration, bcrypt
+              password hashing, and login. REST API in
+              <span class="font-semibold">Node.js / Express</span> with
+              <span class="font-semibold">MongoDB</span> and a responsive
+              HTML/CSS/JS frontend.
+            </p>
+          </article>
+
+          <article>
+            <div class="flex flex-wrap justify-between gap-2 mb-1">
+              <h3 class="font-semibold">EverQuest Item Finder Bot</h3>
+              <span class="text-[color:var(--text-muted)] text-xs">2024</span>
+            </div>
+            <p class="text-[color:var(--text-main)]">
+              Discord bot that uses the
+              <span class="font-semibold">OpenAI API</span> to translate noisy
+              natural-language queries into SQL over a
+              <span class="font-semibold">PostgreSQL</span> item database.
+              Designed prompt templates and parsing logic to robustly map user
+              queries to structured SQL, with a small
+              <span class="font-semibold">Flask</span> web interface on top.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <!-- Skills -->
+      <section class="mb-12">
+        <h2 class="text-lg font-semibold mb-3">Skills</h2>
+        <div
+          class="text-sm md:text-base space-y-1 text-[color:var(--text-muted)]"
+        >
+          <p>
+            <span class="font-semibold text-[color:var(--text-main)]"
+              >Languages:</span
+            >
+            Python, JavaScript, Bash, Java, C, C++, HTML &amp; CSS
+          </p>
+          <p>
+            <span class="font-semibold text-[color:var(--text-main)]"
+              >ML / AI:</span
+            >
+            vLLM, ollama, LM Studio, NumPy, HuggingFace Transformers, Unsloth
+          </p>
+          <p>
+            <span class="font-semibold text-[color:var(--text-main)]"
+              >LLM Tooling:</span
+            >
+            MCP, ACP, RAG, LLM-as-a-judge evaluation
+          </p>
+          <p>
+            <span class="font-semibold text-[color:var(--text-main)]"
+              >DevOps / Data:</span
+            >
+            Docker, Git/GitHub/GitLab, MongoDB, PostgreSQL
+          </p>
+        </div>
+      </section>
+
+      <!-- Contact -->
+      <section id="contact" class="pb-10">
+        <h2 class="text-lg font-semibold mb-2">Contact</h2>
+        <p class="text-[color:var(--text-muted)] text-sm md:text-base mb-2">
+          The easiest way to reach me is by email. I’m always open to chatting
+          about LLM research, tooling, and opportunities.
+        </p>
+        <a
+          href="mailto:shyde04.contact@gmail.com"
+          class="inline-flex items-center gap-2 text-[color:var(--accent)] hover:text-[color:var(--accent)] hover:opacity-80 text-sm md:text-base focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[color:var(--accent)]"
+        >
+          <span>✉</span>
+          <span>shyde04.contact@gmail.com</span>
+        </a>
+      </section>
+    </main>
+
+    <script>
+      const themeToggleBtn = document.getElementById("theme-toggle");
+      const themeToggleIcon = document.getElementById("theme-toggle-icon");
+
+      const updateToggleState = () => {
+        const isDark = document.documentElement.classList.contains("dark");
+        if (themeToggleBtn) {
+          themeToggleBtn.setAttribute("aria-pressed", String(isDark));
+        }
+        if (themeToggleIcon) {
+          themeToggleIcon.textContent = isDark ? "☾" : "☀";
+        }
+      };
+
+      themeToggleBtn?.addEventListener("click", () => {
+        const isDark = document.documentElement.classList.toggle("dark");
+        localStorage.theme = isDark ? "dark" : "light";
+        updateToggleState();
+      });
+
+      updateToggleState();
+    </script>
+  </body>
+</html>
